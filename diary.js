@@ -1,18 +1,3 @@
-// Replace this with your Firebase configuration object
-const firebaseConfig = {
-    apiKey: "your_api_key",
-    authDomain: "your_auth_domain",
-    projectId: "your_project_id",
-    storageBucket: "your_storage_bucket",
-    messagingSenderId: "your_messaging_sender_id",
-    appId: "your_app_id",
-    databaseURL: "your_database_url"
-};
-
-// Initialize Firebase
-const app = firebase.initializeApp(firebaseConfig);
-const db = firebase.database();
-
 function toggleDiaryForm() {
     const diaryForm = document.getElementById('diaryForm');
     // Toggle form visibility
@@ -21,39 +6,45 @@ function toggleDiaryForm() {
 
 function saveEntry() {
     const title = document.getElementById("diaryTitle").value;
-    const content = document.getElementById("diaryEntry").value;
+    const content = document.getElementById("diaryContent").value;
     const timestamp = new Date().toLocaleString();
 
     if (title && content) {
-        const entry = { title, content, timestamp };
+        // Replace newlines for display
+        const formattedContent = content.replace(/\n/g, "<br>");
 
-        // Save entry to Firebase
-        firebase.database().ref('entries/').push(entry);
+        // Save to localStorage
+        const entries = JSON.parse(localStorage.getItem('diaryEntries')) || [];
+        entries.push({ title, content: formattedContent, timestamp });
+        localStorage.setItem('diaryEntries', JSON.stringify(entries));
 
-        // Clear the form and refresh entries
-        document.getElementById("diaryTitle").value = "";
-        document.getElementById("diaryEntry").value = "";
-        document.getElementById("diaryForm").style.display = 'none';
+        // Display the updated list
         displayEntries();
+
+        // Clear input fields and hide the form
+        document.getElementById("diaryTitle").value = "";
+        document.getElementById("diaryContent").value = "";
+        document.getElementById("diaryForm").style.display = "none";
     }
 }
 
 function displayEntries() {
-    const diaryEntries = document.getElementById('diaryEntries');
-    diaryEntries.innerHTML = '<h2>Diary Entries</h2>';
+    const entriesContainer = document.getElementById('diaryEntries');
+    entriesContainer.innerHTML = '<h2>Diary Entries</h2>'; // Reset contents
 
-    firebase.database().ref('entries/').once('value', (snapshot) => {
-        snapshot.forEach((childSnapshot) => {
-            const entry = childSnapshot.val();
-            const div = document.createElement('div');
-            div.classList.add('entry');
-            div.innerHTML = `
-                <h3>${entry.title}</h3>
-                <p>${entry.content.replace(/\n/g, '<br>')}</p>
-                <small><i>${entry.timestamp}</i></small>
-            `;
-            diaryEntries.appendChild(div);
-        });
+    const entries = JSON.parse(localStorage.getItem('diaryEntries')) || [];
+    entries.forEach((entry, index) => {
+        const entryDiv = document.createElement('div');
+        entryDiv.classList.add('entry');
+        entryDiv.innerHTML = `
+            <h3 class="entry-title">${entry.title}</h3>
+            <p class="entry-content">${entry.content}</p>
+            <small class="entry-timestamp">Written on: ${entry.timestamp}</small>
+            <button onclick="deleteEntry(${index})" class="delete-btn">
+                <i class="fas fa-trash-alt"></i>
+            </button>
+        `;
+        entriesContainer.appendChild(entryDiv);
     });
 }
 
