@@ -1,0 +1,407 @@
+/* FONTS */
+
+@font-face {
+    font-family: BlackOpsOne;
+    src: url(fonts/BlackOpsOne-Regular.ttf);
+}
+
+@font-face {
+    font-family: Lexend;
+    src: url(fonts/Lexend-Regular.ttf);
+}
+
+@font-face {
+    font-family: Lexend_SemiBold;
+    src: url(fonts/Lexend-SemiBold.ttf);
+}
+
+/* WRITINGS */
+
+/* Style for inputs and textarea in the diary writing form */
+#diaryForm input,
+#diaryForm textarea {
+    display: block;
+    margin-bottom: 15px;
+    width: 90%;
+    /* Increased width for input fields */
+    padding: 15px;
+    /* Larger padding for better spacing */
+    font-size: 16px;
+    /* Slightly larger text */
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    /* Smooth rounded corners */
+}
+
+/* Specific adjustments for the textarea */
+#diaryForm textarea {
+    height: 180px;
+    /* Increased textarea height */
+}
+
+/* Style for the "Save Entry" button */
+#diaryForm button {
+    font-size: 16px;
+    /* Larger button text for readability */
+    padding: 12px 20px;
+    /* Larger button size */
+    width: auto;
+    /* Keep the size dynamic */
+    background-color: blue;
+    /* Default button color */
+    color: white;
+    /* Button text color */
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+/* Hover effect for "Save Entry" button */
+#diaryForm button:hover {
+    background-color: darkblue;
+}
+
+/* Restore style of the "Add New" button */
+#addNewBtn {
+    font-size: 14px;
+    padding: 10px 15px;
+    background-color: green;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 15px;
+}
+
+/* Hover effect for "Add New" button */
+#addNewBtn:hover {
+    background-color: darkgreen;
+}
+
+button.delete-btn {
+    background: none;
+    border: none;
+    color: red;
+    font-size: 1.2em;
+    cursor: pointer;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+.entries .entry {
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-bottom: 10px;
+    margin-right: 5%;
+    border-radius: 5px;
+    background: #f9f9f9;
+}
+
+.entry-title {
+    font-weight: bold;
+    font-size: 1.2em;
+    margin-top: -2.5px;
+    margin-bottom: 5px;
+}
+
+.entry-content {
+    white-space: pre-line;
+    /* Handles skipping lines */
+    margin-bottom: 5px;
+}
+
+.entry-timestamp {
+    font-size: 0.9em;
+    color: #888;
+}
+
+/* GENERAL LAYOUTS */
+
+.break-line {
+    display: block;
+    width: 90%;
+    border-top: 2px solid #000;
+    margin: 0 auto;
+    padding-bottom: 5px;
+}
+
+.vertical-line {
+    display: block;
+    width: 2px;
+    border-top: 500px solid #000;
+    margin: 0 auto;
+    padding-bottom: 5px;
+}
+
+.container-big {
+    margin: 0 auto;
+    margin-left: 2%;
+    margin-right: 2%;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    border: none;
+    background-color: #ffffff;
+}
+
+.container-big-content {
+    width: calc(50% - 1px);
+    padding-left: 35px;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* INDEX */
+
+body {
+    margin: 0px;
+    font-family: "Solo Sans SemiBold", Helvetica, Arial, sans-serif;
+}
+
+.navbar {
+    padding: 0%;
+    font-size: 14px;
+    /*box-shadow: 0px 4px 5px 0px rgba(173, 210, 227, 0.71);
+    -webkit-box-shadow: 0px 4px 5px 0px rgba(173, 210, 227, 0.71);
+    -moz-box-shadow: 0px 4px 5px 0px rgba(173, 210, 227, 0.71);*/
+}
+
+.navbar a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.navbar h1 {
+    font-family: BlackOpsOne;
+    font-size: 70px;
+    text-align: center;
+}
+
+.navbar-center {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navbar-center>* {
+    padding: 5%;
+    padding-top: 0%;
+    padding-bottom: 25px;
+}
+
+.navbar-center a:hover {
+    font-family: Lexend_SemiBold;
+}
+
+.navbar-center a {
+    text-transform: uppercase;
+    text-align: center;
+    font-family: Lexend;
+    font-weight: 600;
+}
+
+.navbar p {
+    margin-left: 6%;
+    font-family: Lexend;
+    font-size: 40px;
+}
+
+/* INDEX Introduction */
+
+.image-container {
+    width: calc(50% - 1px);
+    justify-content: center;
+    align-items: center;
+    height: 45vh;
+    overflow: hidden;
+    /* background-color: #f0f0f0;
+    Background color for demonstration */
+}
+
+.image-container img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    border-left: 10px solid black;
+    border-bottom: 10px solid black;
+}
+
+.about {
+    width: calc(50% - 1px);
+    padding-left: 35px;
+    padding-right: 35px;
+    line-height: 2;
+    align-items: center;
+    font-family: sans-serif;
+}
+
+.about::first-letter {
+    font-size: 2em;
+    color: #0a0db4;
+    line-height: 0;
+    float: left;
+    margin-top: 12.5px;
+}
+
+.about h3 {
+    font-size: 17.5px;
+}
+
+/* PORTFOLIO */
+
+.portfolio-container {
+    margin: 0 auto;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 35px;
+    display: flex;
+    /* background-color: #0a0db4; */
+    height: 300px;
+}
+
+.portfolio-container-image {
+    width: calc(40% - 1px);
+    justify-content: center;
+    align-items: center;
+    height: 29vh;
+    overflow: hidden;
+    margin-top: 20px;
+    /* background-color: yellow; */
+}
+
+.portfolio-container-image img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+.portfolio-container-text {
+    width: calc(60% - 1px);
+    margin-top: -15px;
+    line-height: 1.5;
+    align-items: center;
+}
+
+.portfolio-container-text h1 {
+    margin-left: 30px;
+    font-size: 30px;
+}
+
+.portfolio-container-text h2 {
+    margin-left: 30px;
+    font-family: Arial;
+    font-size: 20px;
+}
+
+.portfolio-container-text h5 {
+    margin-left: 85%;
+    color: rgb(72, 71, 71);
+    font-size: 15px;
+}
+
+.bordered-image {
+    margin-left: 40px;
+    border: 2px solid black;
+    border-width: 2px;
+}
+
+/* FOOTER */
+
+.footer {
+    padding: 0%;
+    margin-top: 50px;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+
+
+/* ---------------- Responsive styles ---------------- */
+
+
+
+/* For Tablets */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .navbar h1 {
+        font-size: 60px;
+    }
+
+    .container-big-content {
+        padding-left: 15px;
+    }
+
+    .container-big {
+        padding: 15px;
+        margin-bottom: -100px;
+    }
+
+    .about {
+        font-size: 15px;
+    }
+
+    .about h3 {
+        font-size: 15px;
+    }
+
+    .vertical-line {
+        height: 100px;
+    }
+}
+
+
+
+/* For Mobile Devices */
+@media (max-width: 768px) {
+    .navbar h1 {
+        font-size: 40px;
+    }
+
+    .navbar-center {
+        flex-direction: column;
+        padding: 0;
+        padding-bottom: 20px;
+    }
+
+    .navbar-center>* {
+        padding: 10px;
+    }
+
+    .container-big {
+        flex-direction: column;
+    }
+
+    .container-big-content {
+        width: 100%;
+        padding: 10px 0;
+    }
+
+    .image-container {
+        height: 35vh;
+    }
+
+    .about {
+        width: 100%;
+        padding-left: 0px;
+    }
+
+    .vertical-line {
+        display: block;
+        width: 98%;
+        height: 0.1px;
+        border: none;
+        background-color: #000;
+        margin: 20px 0;
+    }
+
+    .footer p {
+        font-size: 12px;
+    }
+}
